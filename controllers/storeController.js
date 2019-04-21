@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
 
 exports.homePage = (req, res) => {
-  console.log(req.name);
   res.render('index');
 };
 
@@ -30,6 +29,7 @@ exports.editStore = async (req, res) => {
 };
 
 exports.updateStore = async (req, res) => {
+  req.body.location.type = 'Point';
   const store = await Store.findOneAndUpdate(
     { _id: req.params.id},
     req.body,
