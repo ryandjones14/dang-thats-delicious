@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const md5 = require('md5');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
-const passportLocalMongoose = require('password-local-mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
-cosnt userSchema = new Schema ({
+const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
