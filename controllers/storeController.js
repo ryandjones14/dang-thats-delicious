@@ -50,10 +50,7 @@ exports.getStores = async (req, res) => {
 };
 
 exports.editStore = async (req, res) => {
-  // 1- find store given id
   const store = await Store.findOne({ _id: req.params.id });
-  // 2- ensure user is store owner
-  // 3- render the edit store form
   res.render('editStore', { title: `edit ${store.name}`, store});
 };
 
@@ -83,6 +80,5 @@ exports.getStoresByTag = async(req, res, next) => {
   const tagsPromise = Store.getTagsList();
   const storesPromise = Store.find({tags: tagQuery });
   const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
-  // res.json(result);
   res.render('tag', { tags, tag, stores });
 };
